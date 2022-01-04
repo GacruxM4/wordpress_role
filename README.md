@@ -6,7 +6,7 @@ Install wordpress with an Ansible role using docker_container.
 Requirements
 ------------
 
-Ansible
+- Ansible
 
 You'll need docker installed on the hosts you want to deployed this role. You can either do it yourself using the convenience script (https://get.docker.com/) and delete the role 'gacruxm4.docker' line from the **Example Playbook**. 
 Or you can use my own Ansible role as depencencies : `ansible-galaxy install gacruxm4.docker`.
