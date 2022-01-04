@@ -1,17 +1,19 @@
-Role Name
+Role Name : wordpress_role
 =========
 
-A brief description of the role goes here.
+Install wordpress with an Ansible role using docker_container.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Ansible
+
+You'll need docker installed on the hosts you want to deployed this role. You can either do it yourself using the convenience script (https://get.docker.com/). Or you can use my own Ansible role to install it : https://github.com/GacruxM4/docker_role.git (or `ansible-galaxy install gacruxm4.docker`).
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+All the default variables for this role are available in `defaults/main.yml`.
 
 Dependencies
 ------------
@@ -21,11 +23,21 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+---
+- hosts: all
+  vars:
+    wp_version: 5.0.3
+    wp_mysql_db: 'database_name_here'
+    wp_mysql_user: 'username_here'
+    wp_mysql_password: 'password_here'
+    wp_webserver: nginx
+    wp_sitename: example.com
+    wp_admin_email: 'your@email.com'
+    wp_install_dir: "/var/www/{{ wp_sitename }}"
+  roles:
+    - gacruxm4.wordpress_role
+```
 
 License
 -------
@@ -34,5 +46,4 @@ BSD
 
 Author Information
 ------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Aurélien Daix a.k.a GacruxM4 :)
