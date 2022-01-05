@@ -3,7 +3,7 @@
 network: 'wordpress'
 mysql_container_name: 'mysql_dock'
 wp_container_name: 'wordpress_dock'
-wp_port: 8080
+wp_port: 80
 mysql_volume_name: 'db'
 wp_volume_name: 'wordpress'
 wp_version: 5.0.3
